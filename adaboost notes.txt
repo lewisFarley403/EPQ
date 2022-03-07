@@ -1,0 +1,33 @@
+the adaboost algorithm:
+Combines many weak classifiers into one strong one
+
+weak classifier = bad classifier but accuracy >50%
+
+adaboosting allows you to:
+- control what classifier is trained on what
+- weights each weak classifer in the final output of the strong combined classifier
+
+THE TRAINING DATASET:
+- classifier should be train on rand subset of imgs
+- one img can be used by multiple classifiers
+
+TRAINING:
+- each image is given a probability of being in the dataset (how is this calculated?)
+- when it gets a classification wrong, it increases the weights of the incorrect image
+- more accurate classfiers are weighted higher in the final decision
+- classifiers are trained one at a time, and after each the adaboost weights are changed
+
+MATHMATICAL DEFINITION:
+- H(x) = sin(sum(Alpha_t*h_t(x)))
+- H(x) is the strong classifier
+- h_t(x) is the weak classifier output and Alpha_t(x) is its weight
+
+TO UPDATE THE WEIGHTS:
+- Alpha_t =0.5 log_n((1-E_t)/E_t)
+- Alpha_t is the new weight for the weak classifier
+- E_t is the number of misscalculations for the weak classifier
+
+KEY POINTS ABOUT THE FORMULA:
+- if the error rate of a classifier =0: Alpha_t =0
+- this makes classifiers that are 50/50 guessing not have any influence at all
+- error rate<0.5, the classifier is weighted negative, essentially do the opposite of what it says

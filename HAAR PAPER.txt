@@ -1,0 +1,4 @@
+HAAR PAPER:
+- uses simple features
+- features rather than pixels because it is faster to compute
+- 
